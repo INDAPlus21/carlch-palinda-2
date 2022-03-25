@@ -37,9 +37,6 @@ func main() {
 func Oracle() chan<- string {
   questions := make(chan string)
   answers := make(chan string)
-  // TODO: Answer questions.
-  // TODO: Make prohecies.
-  // TODO: Print answers.
 
   // Listen routine
   go func() {
