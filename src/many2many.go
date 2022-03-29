@@ -16,7 +16,7 @@ func main() {
   const consumers = 2
 
   before := time.Now()
-  ch := make(chan string)
+  ch := make(chan string, producers)
   wgp := new(sync.WaitGroup)
   wgc := new(sync.WaitGroup)
   wgp.Add(producers)
@@ -28,8 +28,8 @@ func main() {
     go Consume("c"+strconv.Itoa(i), ch, wgc)
   }
   wgp.Wait()
-  wgc.Wait()
   close(ch)
+  wgc.Wait()
   fmt.Println("time:", time.Now().Sub(before))
 }
 
